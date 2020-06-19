@@ -41,14 +41,21 @@ Suppose that you have an n-story building and plenty of eggs. Suppose also that 
 
 Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
-----
-what is f such that
-n = dropped + broken
+```python
+determine floor f:
+  def find_floor():
+    # option 1:
+    # starting at 0, start dropping eggs until one breaks. this gives us f
+    # O(n) or O(1) if we assume f is a constant
 
-I don't understand what the input and output of this function is supposed to be...
 
-20 dropped + broken
-=> 0 broken?
+# what is f such that
+# n = dropped + broken
+
+# I don't understand what the input and output of this function is supposed to be...
+
+# 20 dropped + broken
+# => 0 broken?
 
 def find_floor(n):
 
@@ -59,7 +66,7 @@ def find_floor(n):
   return f
 
 
-
+```
 
 
 

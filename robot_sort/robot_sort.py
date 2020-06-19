@@ -96,8 +96,64 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # sort is complete when robot is holding None and at end of list
+        # light tracks if robot is holding item that needs to be placed
+
+        # init robot state
+        # move robot to beginning
+        self.set_light_off()
+        while self.can_move_left():
+            self.move_left()
+
+        # pick up first item
+        self.init_cycle()
+
+        # find optimal solution:
+        # possible termination conditions:
+        # 
+        while self.light_is_on():
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+
+            # bring robot back to the None item
+            # left check redundant but good to have
+            while self.can_move_left() and not self.compare_item() == None:
+                self.move_left()
+
+            # encounter the None element
+            # pick it up and move right (if I can) to initialize a new iteration
+            # stop execution if I can't
+            self.init_cycle()
+
+            if self.can_move_right():
+                self.move_right()
+                self.swap_item()
+            else:
+                self.set_light_off()
+
+    def init_cycle(self):
+        self.swap_item()
+        self.set_light_on()
+
+
+        # while self.light_is_on() or self.can_move_right():
+        #     # pick up item to move right
+        #     while self.can_move_right():
+        #         self.move_right()
+        #         if self.compare_item() == -1:
+        #             self.swap_item()
+        #             self.set_light_on()
+        #     while self.light_is_on() and self.compare_item() != None:
+        #         self.move_left()
+            
+        #     if self.compare_item() == None and self.light_is_on():
+        #         self.swap_item()
+        #         self.set_light_off()
+
+        #     # I can still move to the right
+
 
 
 if __name__ == "__main__":

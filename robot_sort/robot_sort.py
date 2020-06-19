@@ -116,7 +116,8 @@ class SortingRobot:
                     self.swap_item()
 
             # bring robot back to the None item
-            while not self.compare_item() == None:
+            # left check redundant but good to have
+            while self.can_move_left() and not self.compare_item() == None:
                 self.move_left()
             self.swap_item()
             if self.can_move_right():

@@ -106,9 +106,11 @@ class SortingRobot:
             self.move_left()
 
         # pick up first item
-        self.swap_item()
-        self.set_light_on()
+        self.init_cycle()
 
+        # find optimal solution:
+        # possible termination conditions:
+        # 
         while self.light_is_on():
             while self.can_move_right():
                 self.move_right()
@@ -119,12 +121,21 @@ class SortingRobot:
             # left check redundant but good to have
             while self.can_move_left() and not self.compare_item() == None:
                 self.move_left()
-            self.swap_item()
+
+            # encounter the None element
+            # pick it up and move right (if I can) to initialize a new iteration
+            # stop execution if I can't
+            self.init_cycle()
+
             if self.can_move_right():
                 self.move_right()
                 self.swap_item()
             else:
                 self.set_light_off()
+
+    def init_cycle(self):
+        self.swap_item()
+        self.set_light_on()
 
 
         # while self.light_is_on() or self.can_move_right():

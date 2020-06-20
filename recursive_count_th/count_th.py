@@ -4,24 +4,24 @@ Your function should return a count of how many occurences of ***"th"*** occur w
 Your function must utilize recursion. It cannot contain any loops.
 '''
 
+def count(word, sub=None):
+    if sub == None or sub == "":
+        return 0
+        # raise Exception("Substring must not be empty or None")
+
+    if len(sub) > len(word):
+        return 0
+    elif word[:len(sub)] == sub:
+        return count(word[1:], sub) + 1
+    else:
+        return count(word[1:], sub)
+        
 
 def count_th(word):
-    target = "th"
-    t_arr = list("th")
-    target_size = len(target)
-    w_arr = list(word)
-    word_size = len(w_arr)
+    return count(word, "th")
 
-    if word_size < target_size:
-        return 0
+print(count_th("abcthxythzth"))
 
-    elif word[:2] == target:
-        return count_th(word[1:]) + 1
+print(count("abcthxhthzth", "h"))
 
-    else:
-        return count_th(word[1:])
-
-
-    
-    
-print(count_th("abcthxyz"))
+print(count("abcthxhthzth"))

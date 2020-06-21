@@ -133,9 +133,20 @@ class SortingRobot:
             else:
                 self.set_light_off()
 
+
     def init_cycle(self):
         self.swap_item()
         self.set_light_on()
+
+    def drop_item(self):
+        self.swap_item()
+        self.set_light_off()
+
+    def pickup_item(self):
+        self.swap_item()
+        self.set_light_on()
+
+    # light_is_on => carrying item
 
 
         # while self.light_is_on() or self.can_move_right():

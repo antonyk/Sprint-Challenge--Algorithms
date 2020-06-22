@@ -146,6 +146,15 @@ class SortingRobot:
         self.swap_item()
         self.set_light_on()
 
+    def read(self):
+        pass
+
+    def write(self):
+        pass
+
+    # implement with light indicating data being in volatile memory
+    # 
+
     # light_is_on => carrying item
 
 
